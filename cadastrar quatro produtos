@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+#define NUM_PRODUTOS 4
+
+typedef struct {
+    char nome[50];
+    int quantidade;
+    float preco;
+    char marca[50];
+} Produto;
+
+void cadastrarProduto(Produto* produto, int indice) {
+    printf("Produto %d\n", indice + 1);
+    printf("Nome: ");
+    scanf("%s", produto->nome);
+    printf("Quantidade: ");
+    scanf("%d", &produto->quantidade);
+    printf("Preço: ");
+    scanf("%f", &produto->preco);
+    printf("Marca: ");
+    scanf("%s", produto->marca);
+}
+
+void exibirProduto(const Produto* produto, int indice) {
+    printf("\n-------------- Produto %d --------------\n", indice + 1);
+    printf("Nome: %s\n", produto->nome);
+    printf("Quantidade: %d\n", produto->quantidade);
+    printf("Preço: %.2f\n", produto->preco);
+    printf("Marca: %s\n", produto->marca);
+}
+
+int main() {
+    Produto produtos[NUM_PRODUTOS];
+
+    for (int i = 0; i < NUM_PRODUTOS; i++) {
+        cadastrarProduto(&produtos[i], i);
+    }
+
+    printf("\nLista de produtos cadastrados:\n");
+    for (int i = 0; i < NUM_PRODUTOS; i++) {
+        exibirProduto(&produtos[i], i);
+    }
+
+    return 0;
+}
